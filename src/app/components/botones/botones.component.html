@@ -1,0 +1,19 @@
+<mat-button-toggle-group name="fontStyle" aria-label="Font Style"
+    #group="matButtonToggleGroup"
+    >
+    <mat-button-toggle 
+        *ngFor="let item of (regiones)"
+        value="{{item|lowercase}}"
+        (change)="activarRegion($event.value)"
+        >{{ item }}</mat-button-toggle>
+</mat-button-toggle-group>
+
+<div class="example-selected-value">Selected value: {{group.value}}</div>
+
+<mat-select #x="matSelect">
+    <mat-option *ngFor="let food of (regiones)" [value]="food|lowercase" (selectionChange)="activarRegion(x.value)">
+      {{food | uppercase}}
+    </mat-option>
+</mat-select>
+
+<div class="example-selected-value">Selected value: {{x.value}}</div>
